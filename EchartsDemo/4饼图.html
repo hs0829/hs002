@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/echarts.js"></script>
+</head>
+<body>
+  <div id="main" style="width: 1200px;height: 800px"></div>
+  <script>
+    var mCharts = echarts.init(document.getElementById("main"));
+    option={
+        legend:{
+            orient:'vertical',
+            x:'left',
+            data:['1','2','3','4','5','6','7','8','9']
+        },
+        title:{
+            text:'垃圾',
+            left:'center',
+            top:'center'
+        },
+        series: [
+            {
+                type: 'pie',
+                data: [
+                    {value:150,name:'1'},
+                    {value:300,name:'2'},
+                    {value:450,name:'3'},
+                    {value:600,name:'4'},
+                    {value:750,name:'5'},
+                    {value:900,name:'6'},
+                    {value:1050,name:'7'},
+                    {value:1200,name:'8'},
+                    {value:1350,name:'9'}
+                ],
+                radius:['30%','90%'],//圆环
+                avoidLabelOverlap: false,
+                label:{
+                    show:false,
+                    position:'center'
+                },
+                labelLine:{
+                    show:false
+                },
+                emphasis:{
+                    label: {
+                        show:true,
+                        fontsize:'36',
+                        fontWeight:'bold'
+                    }
+                }
+            }
+        ],
+        roseType:'area',//扇形大小
+    };
+    mCharts.setOption(option);
+  </script>
+</body>
+</html>

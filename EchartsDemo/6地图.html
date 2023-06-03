@@ -1,0 +1,42 @@
+<!-- 矢量地图的实现步骤
+    引入jQuery和echarts.js依赖
+    创建一个dom容器（div）
+    初始化对象
+    设置option
+    要使用ajax获取china.json文件，首先要创建一个文件夹用来装这个地图的json格式文件
+    使用ajax获取china.json，用$.get('',function())
+    在回调函数里边往echarts全局对象注册地图的json数据
+    -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>矢量地图的实现</title>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/echarts.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 1200px;height: 800px"></div>
+    <script>
+        var mCharts = echarts.init(document.getElementById('main'));
+        $.get('../map/中华人民共和国.json',function (ret){
+            //ret表示中国各个省份的矢量地图
+            //往echarts全局对象注册地图的json数据
+            echarts.registerMap('chinaMap',ret)
+            var option={
+                geo:{
+                    type:'map',
+                    map:'chinaMap',//chinaMap需要和registerMap方法里边的第一个参数保持一致
+                    roam:true,//设置允许缩放和拖动的效果
+                    label:{
+                        show:true//展示标签
+                    },
+                    zoom:1,//设置初始化的缩放比例
+                    center:[116.405285,39.904989]//设置地图中心的坐标
+                }
+            }
+            mCharts.setOption(option);
+        })
+    </script>
+</body>
+</html>

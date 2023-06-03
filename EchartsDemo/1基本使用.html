@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="../js/echarts.js"></script>
+</head>
+<body>
+  <div id="main"  style="width: 1200px;height: 800px"></div>
+<!-- 使用Echarts的五个步骤
+  1.创建一个js项目用npm下载echars或者去官网下载echarts.js文件引入到项目里边
+  2.创建一个呈现图表的盒子，其实就是一个div标签
+  3.初始化echarts对象，调用里边的init方法来初始化对象
+  4.准备配置项
+  5.设置配置项
+-->
+<script>
+    var mCharts = echarts.init(document.getElementById("main"));
+    var option ={
+      xAxis: {//直角坐标系中的X轴
+        type:'category',//类目轴
+        data:['x','y','z'],
+      },
+      yAxis: {//直角坐标系中的Y轴
+
+        type: 'value',//数值
+      },
+      series:[//series ;数据集  每个系列通过type来决定自己的图表类型
+        {
+          name:'语文成绩',
+          type:'bar',
+          data: [70,92,80]
+        }
+      ]
+
+
+
+    }
+    mCharts.setOption(option)
+  
+</script>
+</body>
+</html>

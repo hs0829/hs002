@@ -1,0 +1,35 @@
+<!--
+    1.Echarts基础步骤
+    2.准备数据，设置到series里面的data
+    3.把type的值设置为gauge
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/echarts.js"></script>
+</head>
+<body>
+<div id="main" style="width: 1200px;height: 800px"></div>
+<script>
+  var mCharts = echarts.init(document.getElementById('main'));
+  var option={
+    series:{
+        type:'gauge',
+        data:[
+            {//一个指针对象
+                value:105,
+                itemStyle:{//样式
+                    color:'red',//指针颜色
+                }
+            },
+        ],
+        min:0,//仪表盘的数值范围
+        max:150,
+    }
+  }
+  mCharts.setOption(option)
+</script>
+</body>
+</html>

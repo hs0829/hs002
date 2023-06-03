@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/echarts.js"></script>
+</head>
+<body>
+  <div id="main" style="width: 1200px;height: 800px"></div>
+  <script>
+    var mCharts = echarts.init(document.getElementById("main"));
+    var xData=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+    var yData=[3000,2800,3100,4000,6000,1200,2200,1800,3150,2900,2950,4500];
+    var option={
+      title:{
+        text:'业绩图',
+      },
+      xAxis:{
+        type:'category',
+        data:xData
+      },
+      yAxis: {
+        type:'value',
+      },
+      series:{
+        name:'业绩图',
+        type:'line',
+        data:yData,
+        markPoint:{
+          data:[{type:'max',name:'最大值'},{type:'min',name:'最小值'}]
+        },
+        markLine:{
+          data:[{type:'average',name:'平均值'}]
+        }
+      }
+    }
+    mCharts.setOption(option);
+  </script>
+</body>
+</html>

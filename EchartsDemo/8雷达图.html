@@ -1,0 +1,69 @@
+<!--
+ 雷达图的步骤
+ 1.Echarts的基本步骤
+ 2.定义各个维度的最大值，通过radar属性来配置
+ 3.准备产品数据（也就是series里面的data）
+ 4.将type设置为radar
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/echarts.js"></script>
+</head>
+<body>
+  <div style="width: 1200px;height: 800px"></div>
+  <script>
+    var mCharts = echarts.init(document.querySelector('div'));
+    var dataMax =[
+      {
+        name:'易用性',
+        max:100
+      },{
+        name:'功能',
+        max:100
+      },{
+        name:'外观',
+        max:100
+      },{
+        name:'拍照',
+        max:100
+      },{
+        name:'跑分',
+        max:100
+      },
+    ];
+    var option ={
+      radar:{
+        indicator:dataMax,//设置各个维度的最大值
+        shape:'polugon',//配置雷达图最外层的图形
+      },
+      series:[
+        {
+          type:'radar',//定义图标的类型为雷达
+          label:{//设置标签的样式
+            show:true//显示数值
+          },
+          areaStyle:{},//将每一个产品的雷达图形形成阴影的面积
+          data:[
+            {
+              name:'华为',
+              value:[90,90,91,85,87]
+            },{
+              name:'小米',
+              value:[88,93,79,88,90]
+            },{
+              name:'apple',
+              value:[70,96,67,90,99]
+              }
+
+
+          ]
+        },
+      ]
+    }
+    mCharts.setOption(option);
+  </script>
+</body>
+</html>

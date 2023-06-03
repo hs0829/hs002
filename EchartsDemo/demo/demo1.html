@@ -1,0 +1,57 @@
+<!-- 加载动画 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/echarts.js"></script>
+</head>
+<body>
+<div id="main" style="width: 1200px;height: 800px"></div>
+<script>
+  var mCharts = echarts.init(document.getElementById('main'));
+  option = {
+    graphic: {
+      elements: [
+        {
+          type: 'group',
+          left: 'center',
+          top: 'center',
+          children: new Array(7).fill(0).map((val, i) => ({
+            type: 'rect',
+            x: i * 20,
+            shape: {
+              x: 0,
+              y: -40,
+              width: 10,
+              height: 80
+            },
+            style: {
+              fill: '#5470c6'
+            },
+            keyframeAnimation: {
+              duration: 1000,
+              delay: i * 200,
+              loop: true,
+              keyframes: [
+                {
+                  percent: 0.5,
+                  scaleY: 0.3,
+                  easing: 'cubicIn'
+                },
+                {
+                  percent: 1,
+                  scaleY: 1,
+                  easing: 'cubicOut'
+                }
+              ]
+            }
+          }))
+        }
+      ]
+    }
+  };
+  mCharts.setOption(option)
+</script>
+</body>
+</html>
